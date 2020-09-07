@@ -1,14 +1,16 @@
 require('dotenv').config()
-const express = require('express')
 const logger = require('./logger')
+const app = require('./app')
 const db = require('./db')
-const routes = require('./routes')
-const app = express()
-
-app.use('/', routes)
 
 async function start() {
-  await db.connect()
+  try {
+    await db.connect()
+    logger.info('MongoDB connected successfully')
+  } catch (e) {
+    logger.error(`MongoDB connection error: ${e}`)
+    process.exit(-1)
+  }
   app.listen(process.env.PORT, () => {
     logger.info(`Server started on port ${process.env.PORT}`)
   })
