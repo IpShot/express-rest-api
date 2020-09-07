@@ -8,6 +8,7 @@ const app = express()
 app.use(morgan(':remote-addr :remote-user :method :url HTTP/:http-version :status ":referrer" ":user-agent" - :response-time ms', { 
   stream: {
     write(message) {
+      // Remove double line break
       logger.info(message.slice(0, message.length - 1))
     }
   }
