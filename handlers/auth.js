@@ -1,3 +1,3 @@
 exports.login = (req, res) => {
-  res.send('Logged in')
+  res.status(200).send('Logged in')
 }
