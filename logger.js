@@ -6,7 +6,6 @@ const logFormat = printf(({ level, message, timestamp }) => {
 })
 
 const logger = createLogger({
-  exitOnError: true,
   format: combine(
     timestamp(),
     logFormat
