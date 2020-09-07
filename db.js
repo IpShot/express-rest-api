@@ -9,8 +9,8 @@ if (process.env.NODE_ENV === 'development') {
  * Connect to mongo db
  * @returns {Promise} Mongoose connect
  */
-exports.connect = async () => {
-  return mongoose.connect(process.env.MONGO_URI, {
+exports.connect = async (mongoURI) => {
+  return mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

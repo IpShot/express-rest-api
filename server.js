@@ -10,7 +10,7 @@ process.on('unhandledRejection', (reason) => {
 
 async function start() {
   try {
-    await db.connect()
+    await db.connect(process.env.MONGO_URI)
     logger.info('MongoDB connected successfully')
   } catch (e) {
     logger.error(`MongoDB connection error: ${e}`)
